@@ -1,0 +1,52 @@
+﻿{
+  "id": "triposr",
+  "name": "TripoSR",
+  "description": "Image-to-3D generation using the local TripoSR installation.",
+  "version": "1.0.0",
+  "type": "process",
+  "entry": "processor.js",
+  "nodes": [
+    {
+      "id": "generate",
+      "name": "TripoSR",
+      "input": "image",
+      "output": "mesh",
+      "params_schema": [
+        {
+          "id": "mc_resolution",
+          "label": "Geometry resolution",
+          "type": "int",
+          "default": 256,
+          "min": 64,
+          "max": 512
+        },
+        {
+          "id": "chunk_size",
+          "label": "VRAM chunk size",
+          "type": "int",
+          "default": 4096,
+          "min": 512,
+          "max": 8192
+        },
+        {
+          "id": "texture_mode",
+          "label": "Texture mode",
+          "type": "select",
+          "default": "vertex_colors",
+          "options": [
+            { "value": "vertex_colors", "label": "Vertex colors" },
+            { "value": "baked_texture", "label": "Baked texture" }
+          ]
+        },
+        {
+          "id": "texture_resolution",
+          "label": "Texture resolution",
+          "type": "int",
+          "default": 2048,
+          "min": 512,
+          "max": 4096
+        }
+      ]
+    }
+  ]
+}
